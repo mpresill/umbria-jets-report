@@ -1,0 +1,50 @@
+\section{Jet substructure and tagging (Day 1, late morning)}
+
+\subsection{Traditional jet-substructure observables}
+\speaker{Lorenzo Mai}{Universit\`a di Genova \& INFN Genova}
+This talk reviewed the ``classical'' toolbox of jet substructure for boosted
+boson identification, setting the baseline against which the ML and quantum-ML
+approaches of the following sessions are compared: large-radius jet
+reconstruction and grooming (trimming, soft drop), the groomed jet mass,
+prong-sensitive observables such as $N$-subjettiness ratios ($\tau_{21}$) and
+energy-correlation functions ($D_2$), and their sensitivity---and
+limitations---when used to separate $W/Z$-initiated jets from the QCD
+background and, more ambitiously, longitudinal from transverse polarization
+states through the momentum sharing of the two subjets.\footnote{The uploaded
+slide deck exceeded the size that could be retrieved for this summary
+(\texttt{LM\_UJ\_2026.pdf}); this paragraph is therefore based on the talk's
+title, session context, and the discussion it generated, and is intentionally
+kept at a higher level than the other summaries.} The discussion emphasized
+that high-level, IRC-safe substructure observables remain valuable because of
+their smaller sensitivity to parton-shower and hadronization modeling compared
+to low-level constituent-based taggers.
+
+\subsection{Machine learning for jet tagging (cancelled)}
+The scheduled overview by Sophia Vent on machine learning for jet tagging was
+cancelled; the corresponding material was partially covered by the flavour
+tagging review below and by the tagger-specific talks on Day 2.
+
+\subsection{Flavour tagging in ATLAS and CMS with machine learning}
+\speaker{Alessandro Calandri}{Universit\`a \& INFN Firenze, for ATLAS and CMS}
+The review traced the evolution of heavy-flavour tagging from multivariate
+combinations of impact-parameter, secondary-vertex, and soft-lepton information
+(MV2c10, DeepCSV) to the Run-2 paradigm shift of constituent-based deep
+learning (DeepJet) and today's Transformer era. CMS Run-3 tagging is based on
+ParticleNet and Particle Transformer derivatives, culminating in UParT~v2, a
+single unified model performing b/c/strange/quark--gluon/tau identification
+together with flavour-aware energy regression and resolution estimation, with
+adversarial training for robustness. ATLAS deploys GN2 and now GN3, with
+extended inputs (tracks, electrons, muons, particle-flow candidates) and
+auxiliary tasks (vertexing, track origin, heavy-quark charge), giving
+substantial gains in c- and light-jet rejection, and ITk studies target the
+HL-LHC (improved pixel granularity and forward coverage relevant for VBF/VBS).
+Online b-tagging with ParticleNet at the CMS trigger and first c-tag triggers
+significantly enlarge the acceptance for $HH\to 4b$, $t\bar t H$, and boosted
+$H\to b\bar b/c\bar c$. Calibration remains the key to physics use:
+fixed-working-point and pseudo-continuous 2D b/c calibrations, optimal-transport
+(normalizing-flow) morphing of simulation to data in ATLAS, and dedicated
+calibrations for boosted-Higgs taggers (CMS GloParT with 314 classes, ATLAS
+GN2X) using $g\to b\bar b/c\bar c$ proxies and boosted $Z\to b\bar b$. Both
+experiments observe logarithmic scaling-law improvements with training-set and
+model size (ATLAS up to 7.7 billion jets and 86M parameters), suggesting
+performance has not yet saturated.

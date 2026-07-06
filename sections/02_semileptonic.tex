@@ -1,0 +1,77 @@
+\section{Semi-leptonic decay channels (Day 1, morning)}
+
+\subsection{Experimental review for diboson and VBS}
+\speaker{Ankita Mehta}{Ghent University, for the ATLAS and CMS Collaborations}
+The session opened with a comprehensive review of the LHC electroweak
+multiboson program at the precision and energy frontiers. Diboson production
+($WW$, $WZ$, $ZZ$, $V\gamma$) has been measured inclusively and differentially
+at 5.02, 13, and 13.6~TeV, with precision that in many areas already exceeds
+the original projections, thanks to detector performance, advanced analysis
+techniques, and higher-order theory (up to NNLO~QCD + NLO~EW). Highlights
+included the CMS anomalous-coupling analysis of semi-leptonic $WV$ with
+ParticleNet-tagged boosted bosons (currently among the strongest bounds on
+triple-gauge and four-fermion operators), the ATLAS $W\gamma$ measurement with
+radiation-amplitude-zero and polarization-sensitive observables, and the ATLAS
+$ZZ\to 2\ell 2\nu(jj)$ cross sections with aTGC/aQGC constraints. On the VBS
+side, all major channels ($W^{\pm}W^{\pm}$, $WZ$, $ZZ$) are now observed; the
+first Run-3 VBS measurement (CMS $W^{\pm}W^{\pm}$ and $WZ$ at 13.6~TeV,
+including first differential $WZ$ distributions) is statistically limited, and
+semi-leptonic channels ($WVjj$, $ZVjj$, $VVjj$) increasingly rely on
+DNN/RNN-based signal--background discrimination. The speaker stressed that
+semi-leptonic modes are challenging but that ML-based boson tagging has been a
+game changer, that VBS simulations are still LO in many cases, and that
+combinations and SMEFT interpretations (including the ATLAS EW global fit) make
+these measurements key inputs to global searches for new physics.
+
+\subsection{Theory review on polarised bosons}
+\speaker{Rene Poncelet}{IFJ PAN Krak\'ow}
+The theory review traced the path from the motivation (unitarity of
+$W_LW_L$ scattering and its link to EWSB) to the state of the art in polarized
+predictions. Since boson polarization is not directly observable, decay
+products act as polarimeters; the modern approach defines polarized cross
+sections for on-shell bosons in the double-pole or narrow-width approximation
+(DPA/NWA), generating separately polarized samples that are fitted to data,
+with interference contributions kept under control. Higher-order corrections
+are essential: polarization fractions are shape-dependent and the corrections
+themselves depend on the polarization state, so unpolarized $K$-factors
+distort spectra; NNLO~QCD is needed for percent-level scale uncertainties
+(illustrated with polarized $W$+jet at NNLO and mock-data fits). The talk
+reviewed the rapidly growing literature of polarized calculations---NLO~QCD/EW
+for $WW$, $WZ$, $ZZ$, NNLO~QCD for $WW$ and (new) NNLO~QCD+NLO~EW for $WZ$ with
+theory-nuisance-parameter uncertainties, semi-leptonic decays at NLO~QCD
+(resolved and boosted setups, where $LL$ turns out to be rather insensitive to
+QCD corrections while $TT$/mixed states receive large ones)---as well as
+Monte Carlo developments (polarized MadGraph, SHERPA nLO+PS, POWHEG-BOX-RES
+NLO+PS, and SMEFT@NLO+PS). A dedicated COMETA study of polarized $ZZ$
+production was presented, comparing NWA/DPA/off-shell treatments,
+matching/merging schemes, and best predictions against the ATLAS polarization
+fractions (agreement, dominated by experimental uncertainties). The outlook
+identified hadronic polarization taggers, higher-order corrections to decays,
+and parton-shower matching as the next frontiers.
+
+\subsection{Gauge boson polarization as a probe of SMEFT effects in $WZ$ production (remote)}
+\speaker{Maryam Bayat Makou}{Southern Methodist University; with S.~Bhattacharya}
+This contribution presented a feasibility study, carried out within COMETA, of
+the interplay between dimension-6 SMEFT operators and gauge boson polarization
+in $WZ\to 3\ell$ production at $\sqrt{s}=13$~TeV. Dedicated polarized samples
+($W_TZ_T$, $W_LZ_L$, $W_TZ_L$, $W_LZ_T$; 100k events each, MadGraph + Pythia +
+Delphes) were compared between SM and SMEFT using a broad set of kinematic and
+angular observables. EFT effects grow in the high-$\pT$ tails (clearly visible
+in the leading-lepton $\pT$ above $\sim$200~GeV, dominated by the
+energy-growing behavior of $C_W$); ranking the operators by a
+polarization-shape metric shows that $c_{HWB}$, $c_{HDD}$ and $c_{Hl3}$ produce
+the largest genuine distortions of the polarization composition, while others
+(e.g.\ $c_{HWB}$ at large coefficient) act mainly on the overall rate. A DNN
+trained on SM polarized samples to separate longitudinal from transverse
+configurations learns physically meaningful observables (the top feature being
+the lepton rapidity separation $\Delta y$), and EFT events systematically shift
+the learned polarization scores, providing operator-dependent ``polarization
+fingerprints''. A two-output architecture predicting $P(W_L)$ and $P(Z_L)$
+separately was advocated as more physical and better suited for EFT studies. A
+publication is in preparation.
+
+\subsection{Discussion}
+The session closed with a discussion on the complementarity between
+polarization observables and traditional EFT analyses, on the treatment of
+interference and off-shell effects in polarized templates, and on the
+priorities for extending these studies to semi-leptonic final states.

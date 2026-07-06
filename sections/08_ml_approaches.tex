@@ -1,0 +1,52 @@
+\section{Machine-learning approaches (Day 2, afternoon)}
+
+\subsection{Prospect studies for polarization measurements in boosted VBS semi-leptonic events}
+\speaker{Tom Allene}{L2IT Toulouse; with A.~Giannini and J.~Manjarres}
+This prospect study targets the semi-leptonic VBS diboson final state as a
+benchmark for longitudinal-polarization measurements: the hadronic decay of one
+boson brings the large branching fraction and access to high boson $\pT$,
+while the leptonic boson retains a clean signature---but the longitudinal
+fraction in VBS is only $\mathcal{O}(7\%)$, making the measurement extremely
+challenging. The analysis is performed at truth level with MadGraph+Pythia
+simulations, with object selections approximating detector acceptance, and
+focuses on events where the hadronic boson is reconstructed as a boosted
+large-radius jet, in which polarization information is not directly accessible
+experimentally. Jet-level variables and jet constituents are used to recover
+polarization-sensitive observables (in the spirit of the regression approach
+shown in the ATLAS tagger talk), and the sensitivity to longitudinal
+polarization of a baseline cut-based analysis using classical jet and lepton
+observables is compared with that of an analysis exploiting ML-driven
+regression of polarization-sensitive variables, quantifying the gain that such
+techniques can bring to future ATLAS semi-leptonic VBS polarization
+measurements.\footnote{The uploaded slides
+(\texttt{Perugia\_Presentation.pdf}) exceeded the retrievable size; this
+summary follows the contribution abstract and the discussion.}
+
+\subsection{Unlocking hadronic $W/Z$ polarization measurements via a 3D Designed Decorrelated Tagger}
+\speaker{Amartya Rej}{TU Dortmund}
+This contribution argued for a change of strategy in how taggers are used for
+polarization: a discriminant trained to separate $L$ from $T$ learns exactly
+the angular correlations one wants to measure, biasing any subsequent shape
+analysis. Instead, one should use a QCD-vs-signal tagger explicitly
+\emph{decorrelated} from the polarization-sensitive observable $X$ (a
+$\costh$ proxy built from declustered subjet momenta in the large-$R$ jet rest
+frame), preserving the angular information for unbiased extraction. Concretely,
+the talk presented a three-dimensional extension of the Designed Decorrelated
+Tagger (DDT, JHEP 05 (2016) 156) that simultaneously decorrelates an existing
+tagger score from the soft-drop mass, the jet $\pT$, and $X$, guaranteeing a
+flat QCD selection efficiency at a fixed working point and thereby enabling
+data-driven background estimation in bins of $X$. Using the public JetClass
+dataset with ParT and ParticleNet scores, the 3D~DDT was shown to successfully
+flatten the QCD response versus $X$ with minimal signal-efficiency loss;
+several $X$ definitions were implemented and systematically ranked by
+decorrelation quality. The result is a concrete, tagger-agnostic analysis
+blueprint for hadronic $W/Z$ polarization measurements at the LHC and HL-LHC.
+
+\subsection{Discussion}
+The discussion contrasted the two philosophies presented across the
+workshop---polarization-aware taggers plus regression versus
+polarization-blind, decorrelated taggers plus template fits in unbiased
+observables---and converged on the view that they are complementary: the
+former maximizes per-event information, the latter maximizes robustness of the
+background estimate, and both should be exercised on the proposed common open
+dataset.

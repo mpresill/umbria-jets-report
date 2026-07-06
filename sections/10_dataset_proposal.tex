@@ -1,0 +1,158 @@
+\section{Proposal: \textsc{COMETA-PolJetClass}, an extended JetClass dataset with polarization labels}
+\label{sec:proposal}
+
+Building on the open-data discussion of Day~1 and on the deliverable planning
+of Day~2, the participants converged on a concrete joint project: the
+construction of an extended, \emph{polarization-labeled} JetClass-like dataset
+for semi-leptonic diboson processes, together with a community benchmark of the
+tagging architectures presented at this workshop. The project deliberately
+follows the blueprint of the Particle Transformer paper
+(Qu, Li, Qian, arXiv:2202.03772, ICML~2022), which paired a new large-scale
+public dataset (JetClass: 100M jets in 10 classes, generated with
+MadGraph+Pythia and a Delphes CMS-like detector, anti-$k_t$ $R=0.8$ jets with
+$\pT\in[500,1000]$~GeV and per-particle kinematic, identification, and
+trajectory-displacement features) with a new architecture (ParT, with pairwise
+interaction features in the attention bias) and a standardized evaluation
+protocol. The sections below mirror that structure.
+
+\subsection{The \textsc{COMETA-PolJetClass} dataset}
+
+\paragraph{Processes and classes.} The dataset targets semi-leptonic $ZV$
+production, $V=W,Z$ decaying hadronically: $pp\to Z(\to\ell\ell)\,W(\to q\bar
+q')$ and $pp\to Z(\to\ell\ell)\,Z(\to q\bar q)$, in both QCD-induced and
+VBS/EW ($ZVjj$) phase spaces, with the hadronically decaying boson boosted and
+captured by a single large-radius jet. The primary jet classes are
+$\{W_L,\,W_T,\,Z_L,\,Z_T,\,q/g\}$, the light quark/gluon class being drawn from
+$Z(\to\ell\ell)$+jets to match the signal topology. The leptonic $Z$ leg is
+retained in the event record so that \emph{production-level} observables
+(scattering angle, system kinematics) are available alongside the jet, unlike
+in JetClass, which stores isolated jets only.
+
+\paragraph{Improved MC accuracy.} The distinguishing ambition, motivated by the
+theory review and the MC roundtable, is generation accuracy beyond the
+LO-template standard, in two directions:
+\begin{enumerate}
+\item \emph{Perturbative accuracy.} Polarized signals are defined in the
+double-pole approximation with documented frame conventions, generated at
+NLO~QCD accuracy (SHERPA nLO+PS and POWHEG-BOX-RES NLO+PS), supplemented by LO
+multi-jet-merged MadGraph samples; fixed-order DPA predictions (NLO and, where
+available, NNLO~QCD) are used to validate or reweight the samples. This
+addresses the 10--50\% biases of LO polarized templates highlighted in the
+experimental review.
+\item \emph{Multiplicity of generators and showers.} Every process/class is
+produced in several generator$\times$shower combinations (at minimum
+MadGraph+Pythia8, SHERPA native, POWHEG+Pythia8, POWHEG+Herwig7, spanning
+dipole and angular-ordered showers, with varied hadronization models), and
+each event carries a provenance label. Modeling robustness thus becomes a
+first-class, \emph{measurable} property of any tagger trained on the dataset,
+directly probing the up-to-$\sim$40\% shower/hadronization vulnerability of
+low-level taggers reported at the workshop.
+\end{enumerate}
+
+\paragraph{Detector emulation, features, and labels.} For comparability with
+JetClass, events are passed through the same Delphes CMS-like card, with
+anti-$k_t$ $R=0.8$ jets in $\pT\in[400,1000]$~GeV, and per-particle features
+form a strict superset of the JetClass ones (kinematics, particle
+identification, trajectory displacement). Each jet additionally carries truth
+labels: the boson helicity state in the declared frame, the true decay angle
+$\costh$ (and azimuth $\varphi^{*}$), the production/scattering angle
+$\Theta$ of the diboson system, the truth subjet four-momenta, and the boson
+$\pT$. A target size of $\mathcal{O}(10)$M jets per class per
+generator/shower combination keeps the total within an order of magnitude of
+JetClass while enabling scaling-law studies.
+
+\subsection{Architectures to be compared}
+
+The benchmark will confront, on identical inputs and splits, the families of
+approaches presented at the workshop:
+(i) a high-level, IRC-safe baseline: BDTs/MLPs on groomed mass,
+$\tau_{21}$, $D_2$, energy correlators, and the $p_\theta$ observable of the
+De--Rentala--Shepherd method;
+(ii) constituent-based deep networks: ParticleNet, a plain Transformer, and
+ParT with its pairwise-interaction attention bias, in the five-class
+configuration and in the ATLAS-style multi-task configuration with
+$\costh$ and subjet-kinematics regression heads;
+(iii) Lund-plane approaches: LundNet as classical reference and the LP2B
+quantum tree tensor network, testing whether IRC-safe declustering inputs
+retain their robustness advantage at scale;
+(iv) quantum-informed hybrids: QUIVER-style injection of quantum Fisher
+information tokens into ParT;
+(v) decorrelated variants: the 3D~DDT applied to the best classifier scores,
+flattening the QCD response in mass, $\pT$, and the polarization-sensitive
+observable; and
+(vi) the amplitude-assisted optimal observable constructed from matrix
+elements, serving as the per-event information upper bound against which all
+learned approaches are gauged.
+
+\subsection{Benchmark tasks and metrics}
+
+Following the ParT evaluation protocol, but extended to the polarization
+context, four tasks are defined:
+\begin{enumerate}
+\item \emph{Tagging}: each polarized boson class versus $q/g$, reported as
+accuracy, AUC, and background rejection at 50\% and 99\% signal efficiency,
+\emph{separately per polarization state}, since the workshop showed that
+$q/g$ rejection depends on polarization.
+\item \emph{Polarization classification}: $V_L$ versus $V_T$ (and the joint
+$W$-vs-$Z$ $\times$ $L$-vs-$T$ problem), with AUC complemented by a
+physics-level figure of merit: the expected uncertainty on the longitudinal
+fraction $\fL$ from template pseudo-fits including the QCD background, which
+is what an LHC analysis ultimately optimizes.
+\item \emph{Regression}: per-jet estimation of $\costh$ (and optionally
+$\varphi^{*}$ and the subjet kinematics), evaluated through resolution
+($\sigma_{68}$), bias versus true $\costh$, and---critically---response
+uniformity between $L$ and $T$ samples, so that the regressed observable can
+be used in an unbiased template fit.
+\item \emph{Decay versus production angles}: a dedicated study quantifying
+whether the decay angle $\costh$ (jet-internal information) or the production
+angle $\Theta$ (event-level information, accessible thanks to the retained
+leptonic leg) carries more polarization sensitivity per event, using
+Fisher-information and mutual-information estimates as well as the degradation
+of the $\fL$ pseudo-fit when either input is removed. This directly informs
+whether future analyses should invest in jet-substructure regression, in
+event-level reconstruction, or in their combination.
+\end{enumerate}
+All results are to be reported with a robustness matrix (train on
+generator/shower $A$, test on $B$) and, for decorrelated taggers, with the
+sculpting of the QCD templates quantified by a Jensen--Shannon divergence.
+
+\subsection{Suggestions}
+
+\textcolor{red}{%
+The following suggestions were added by the author of this summary.
+(1)~Store, for every event, the per-helicity DPA matrix-element weights
+(including the interference term): this makes the amplitude-assisted optimal
+observable computable on the released events, allows reweighting between
+polarization definitions and reference frames without regeneration, and turns
+the definition dependence itself into a quantifiable systematic.
+(2)~Provide helicity labels in at least two frames (e.g.\ the $VV$
+center-of-mass helicity frame and the Collins--Soper frame), since polarization
+fractions are frame-dependent and ATLAS/CMS conventions differ.
+(3)~Include an explicit ``interference/off-shell'' event category rather than
+forcing every event into a pure-helicity class, so benchmark fits can propagate
+the non-closure of the polarized decomposition.
+(4)~Reweight all classes to a common boson-$\pT$ spectrum (or provide the
+weights) to prevent taggers from learning production kinematics instead of
+decay structure---particularly important for the decay-vs-production-angle
+study of Task~4.
+(5)~Publish fixed train/validation/test splits, evaluation code, and a public
+leaderboard in the style of the \texttt{jet-universe} repository, with a
+versioned DOI (Zenodo/CERN Open Data), and require metrics to be quoted as
+mean~$\pm$~spread over at least five trainings.
+(6)~Add a small full-simulation companion sample (ATLAS/CMS open data) to test
+ParT-style fine-tuning and quantify the Delphes-to-full-sim transfer gap before
+any in-experiment deployment.
+(7)~Extend the ParT pairwise interaction features with polarization-motivated
+pair variables (e.g.\ the momentum-sharing $z$ and pair mass in the jet rest
+frame), a cheap architectural handle that directly encodes the physics of the
+$L$/$T$ decay distributions~$\propto\sin^2\theta^{*}$ vs
+$(1\pm\cos\theta^{*})^2/2$.
+(8)~Include the azimuthal decay angle $\varphi^{*}$ among the regression
+targets from the start: it gives access to the off-diagonal spin-density-matrix
+elements and thus connects this dataset to the quantum-information program
+(entanglement observables) highlighted in the experimental review.}
+
+\section*{Acknowledgements}
+This summary is based on the material uploaded to the workshop Indico page
+(\url{https://indico.cern.ch/event/1601346/}). The workshop was supported by
+the COMETA COST Action CA22130.

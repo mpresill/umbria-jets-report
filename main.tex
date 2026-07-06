@@ -1,0 +1,64 @@
+% =========================================================================
+%  Report of the COMETA Workshop on Polarization Tagging
+%  for Hadronic Boosted Bosons
+%  Perugia (IT), 1--2 July 2026
+%  https://indico.cern.ch/event/1601346/
+%
+%  Overleaf-ready: compile with pdfLaTeX (main file: main.tex)
+% =========================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black,citecolor=blue!60!black]{hyperref}
+\usepackage{authblk}
+\usepackage[expansion=false]{microtype}
+
+% --- convenient macros ------------------------------------------------------
+\newcommand{\pT}{p_{\mathrm{T}}}
+\newcommand{\costh}{\cos\theta^{*}}
+\newcommand{\fL}{f_{\mathrm{L}}}
+\newcommand{\fT}{f_{\mathrm{T}}}
+\newcommand{\speaker}[2]{\noindent\textbf{#1} \emph{(#2)}\par\smallskip}
+
+\title{\textbf{Report of the COMETA Workshop on\\ Polarization Tagging for Hadronic Boosted Bosons}\\[2mm]
+\large Perugia, Italy, 1--2 July 2026}
+\author{Workshop summary}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report summarizes the COMETA (COST Action CA22130) workshop on polarization
+tagging for hadronic boosted electroweak bosons, held in Perugia on 1--2 July
+2026. The workshop brought together theorists, experimentalists, and
+machine-learning experts to discuss the theoretical, experimental, and
+ML-related aspects of boosted hadronic decays of $W$ and $Z$ bosons, with a
+particular focus on polarization tagging and vector-boson-scattering (VBS)
+topologies. The report is organized following the blocks of the workshop
+agenda: semi-leptonic decay channels, jet substructure and tagging, quantum
+machine learning, open-data discussion, Monte Carlo modeling of polarization,
+the experimental status of polarization measurements, machine-learning
+approaches, and the closing discussion towards a COMETA deliverable.
+\end{abstract}
+
+\tableofcontents
+
+\input{sections/01_introduction}
+\input{sections/02_semileptonic}
+\input{sections/03_jet_substructure}
+\input{sections/04_quantum_ml}
+\input{sections/05_open_data}
+\input{sections/06_mc_modeling}
+\input{sections/07_experimental_status}
+\input{sections/08_ml_approaches}
+\input{sections/09_closing_discussion}
+\input{sections/10_dataset_proposal}
+
+\end{document}

@@ -1,0 +1,73 @@
+\section{Quantum machine learning (Day 1, afternoon)}
+
+\subsection{An introduction to quantum computing approaches for optimization problems}
+\speaker{Marco Baioletti}{Universit\`a degli Studi di Perugia}
+This pedagogical lecture introduced the two main quantum-computing paradigms
+relevant for optimization: gate-based programmable devices and quantum
+annealers. After reviewing qubits, superposition, entanglement, measurement,
+elementary gates, and circuit execution on NISQ (noisy intermediate-scale
+quantum) hardware, the speaker presented variational quantum algorithms, in
+which a parametric circuit is optimized by a classical outer loop, with QAOA
+(alternating problem and mixer Hamiltonians) as the prototypical algorithm for
+combinatorial problems---illustrated with charged-particle track reconstruction
+formulated as a QUBO over triplet-selection variables---and VQE for
+Hamiltonian ground-state problems. The second part covered adiabatic quantum
+computation and D-Wave-type annealers: the adiabatic theorem, annealing
+schedules, quantum tunneling as a mechanism to escape local minima, the QUBO
+formulation (with minimum vertex cover as a worked example), and practical
+knobs such as number of reads, annealing time, and reverse annealing for hybrid
+quantum--classical refinement. The take-away was that variational algorithms
+attempt to work around NISQ limitations on gate-based machines, while annealers
+are a pragmatic alternative for mid-size optimization problems.
+
+\subsection{Quantum-Informed Neural Networks}
+\speaker{Aritra Bal, Michael Binder}{KIT; with M.~Klute, B.~Maier, M.~Spannowsky}
+Rather than running full quantum classifiers, this work extracts geometric
+information from quantum representations of jets and injects it into classical
+networks. Jets are encoded with the one-particle-one-qubit (1P1Q) scheme (up to
+ten constituents, $(\pT,\eta,\phi)$ per qubit); the Quantum Fisher Information
+Matrix (QFIM) of the resulting state is interpreted as a learned summary of
+two-particle correlations: for top jets, large off-diagonal QFIM blocks connect
+subjet constituents, while QCD jets show suppressed off-diagonals. Three
+increasingly powerful applications were shown: (i) a training-free,
+QFIM-only prototype classifier reaching VQC-level performance with faster,
+more stable convergence when used as initialization; (ii) a non-trainable graph
+classifier and a trainable GNN (``QuantumConv1D'') whose messages are augmented
+with QFI sub-matrices, converging faster and outperforming the classical
+benchmark; and (iii) QUIVER, which injects QFI tokens and attention biases into
+the state-of-the-art Particle Transformer, giving statistically significant
+improvements over five runs on top tagging and $H\to c\bar c$ benchmarks
+(arXiv:2606.02785, accepted at the ICML~2026 AI4Physics workshop). Current
+limitations are the $\sim$10-qubit simulability ceiling and the cost of
+QFIM-based optimization; the outlook includes extending from top to boosted
+$W/Z/H$ jets---directly relevant to polarization tagging---and hybrid
+quantum-to-classical pipelines beyond qubits.
+
+\subsection{Quantum Lund plane for VBS}
+\speaker{Fabrizio Napolitano}{Universit\`a e INFN Perugia}
+This talk (based on arXiv:2604.18613) proposed a quantum machine-learning
+approach to boosted-boson and polarization tagging built on the Lund jet plane.
+The LP2B (Lund Plane to Bloch) encoding maps each Lund declustering node,
+through a differentiable and trainable stereographic projection, onto a qubit
+of a Quantum Tree Tensor Network (QTTN) whose topology mirrors the C/A
+declustering tree (kept shallow via a $\ln k_t > 1$ cut), with CRY
+entanglement, variational layers, and readout; by construction the
+representation is IRC-safe. Benchmarked against BDTs and MLPs on Lund inputs,
+LundNet-2, and 1P1Q-style VQCs, on tasks including $W$ tagging, top tagging,
+and $W$/graviton polarization discrimination, the QTTN reaches competitive
+performance with a very small parameter count and no sign of overfitting even
+with only $10^3$ training jets. A central physics message was that polarization
+tagging is ``difficulty-limited'' ($W_T$ and $W_L$ are the same particle, so
+methods saturate quickly), and that low-level constituent-based approaches
+inherit parton-shower/hadronization modeling uncertainties of up to
+$\sim$40\%, whereas IRC-safe high-level (Lund-plane) inputs are far more
+resilient---a decisive consideration for analyses with large backgrounds in
+the signal region. The model was validated on real quantum hardware (SpinQ
+Triangulum, 3 qubits), with AUC compatible with simulation
+($0.58\pm0.02$ vs $0.60\pm0.02$).
+
+\subsection{Discussion}
+The session discussion focused on where quantum approaches can be genuinely
+complementary to classical ML---compact, physics-informed representations and
+modeling robustness rather than raw performance---and on the scalability of
+these methods towards realistic detector-level datasets.

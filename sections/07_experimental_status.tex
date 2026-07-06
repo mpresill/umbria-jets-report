@@ -1,0 +1,83 @@
+\section{Experimental status on polarisation (Day 2, late morning)}
+
+\subsection{VBS and diboson polarisation measurements}
+\speaker{Joany Manjarres}{Universit\'e de Toulouse, CNRS/IN2P3, L2IT}
+This review presented the full landscape of polarization measurements, from
+LEP (where longitudinal--longitudinal joint polarization was never observed) to
+the LHC. The formalism was set up in terms of the single- and two-boson spin
+density matrices, whose diagonal elements give the helicity fractions
+($f_{LL}$, $f_{LT}$, $f_{TL}$, $f_{TT}$) and whose off-diagonal elements encode
+quantum coherence and entanglement. Measurements proceed by fitting data with
+polarized templates, whose construction is itself a challenge: LO MadGraph
+templates can bias fractions by 10--50\%, so NLO-accurate templates are
+obtained by DNN-based multi-dimensional reweighting to fixed-order DPA
+predictions. The milestones reviewed were: CMS and ATLAS single- and
+joint-polarization in $WZ$ (first observation of joint states, $f_{00}$ at
+7.1$\sigma$); the ATLAS high-$\pT(Z)$ analysis observing the
+radiation-amplitude-zero dip through a dedicated ``depth'' variable and
+reaching observation/evidence of doubly longitudinal bosons in the
+Goldstone-like regime; ATLAS evidence for $Z_LZ_L$ in $ZZ\to4\ell$
+(4.3$\sigma$); the first VBS-phase-space polarization measurements in
+same-sign $WW$ (CMS, and the 2025 ATLAS evidence for $W_LW_X$ at 3.3$\sigma$
+with limits on $W_LW_L$); and the brand-new ATLAS and CMS $H\to ZZ^*\to4\ell$
+polarization analyses, which access off-diagonal density-matrix elements and
+reject the non-entangled pure-longitudinal hypothesis at 4.7$\sigma$ (ATLAS)
+and $>6\sigma$ (CMS)---the first entanglement tests with massive vector bosons.
+Concluding remarks: results should be presented in harmonized language
+(fractions vs pseudo-cross-sections vs density-matrix coefficients);
+$q\bar q$- and $gg$-initiated production may deserve separate treatment;
+leptonic channels will remain statistics-limited even at the HL-LHC, so
+exploiting hadronic decays with boson taggers and matrix-element regressions
+is the way forward.
+
+\subsection{A polarisation-aware classification and regression tagger for boson-initiated jets (ATLAS)}
+\speaker{Antonio Giannini}{USTC, based on ATLAS public plots JETM-2026-01}
+The first public ATLAS results on a polarization-aware extension of boosted
+boson tagging were shown. A Particle Transformer trained on UFO large-$R$
+soft-drop jet constituents performs a five-class classification ($W_L$, $W_T$,
+$Z_L$, $Z_T$, quark/gluon) augmented with regression auxiliary tasks
+($\costh$ and the kinematics of the two truth subjets). Key findings:
+quark/gluon rejection depends on the boson polarization state; the $L$-vs-$T$
+task is intrinsically hard (the classes overlap physically---a longitudinal
+boson at high $\costh$ looks exactly like a transverse one) and the ParT
+discriminant already sits close to the theoretical upper bound, outperforming
+subjet-reclustering and quark-level $\costh$ baselines. The more impactful
+novelty is the regression: the regressed $\costh$ has the same response for
+$L$ and $T$ jets, achieves an absolute resolution of
+$\mathcal{O}(10\text{--}15\%)$---up to a factor two better than reclustered
+subjets at low $\costh$, where detector granularity forms a ``wall''---and
+provides, for the first time, experimental observables directly sensitive to
+polarization in hadronic decays. Two-prong kinematic regression outperforms
+reconstructed subjets as well. A first Run-3 data/MC validation in a dijet-
+and $V$+jets-enriched selection (13.6~TeV, 28~fb$^{-1}$, inference via the
+ATLAS BoostedJetTaggers/ONNX infrastructure) shows well-behaved discriminant
+and regressed-$\costh$ distributions.
+
+\subsection{Experimental perspectives in polarisation tagging}
+\speaker{Antonio Giannini}{USTC}
+A companion big-picture talk addressed the Why/How/What/When of hadronic
+polarization measurements. Why: high-energy $V_LV_L$ interactions are the
+directest test of unitarization by the Higgs sector and a prime hiding place
+for new physics; all current polarization measurements are leptonic, while
+hadronic channels uniquely open the high-$\pT$ regime. How: today's boson
+taggers solve $V$-vs-$q/g$ classification and are calibrated on SM candles;
+polarization adds the harder $L$-vs-$T$ problem, where jet-substructure BDTs
+leave $\sim$33\% contamination at 50\% efficiency and deep learning on
+constituents or energy correlators only marginally improves---motivating the
+classification-plus-regression strategy of the previous talk, together with
+dedicated calibration schemes. What: inclusive $V/VV$ production (potentially
+up to boson $\pT\sim1$~TeV) can serve as measurement and calibration ground;
+the VBS semi-leptonic channel, already observed in Run 2 with a significant
+boosted contribution, is the flagship target; EFT constraints (dim-6/dim-8)
+depend on polarization states and would benefit directly. When: hadronic
+analyses historically lag because of tagger calibration, so realistic new
+measurements are expected on the full Run-2+3 datasets and at the HL-LHC;
+the pheno groundwork presented at this workshop (Rej, Napolitano, Allene,
+this tagger) is the necessary first step.
+
+\subsection{Discussion}
+The session discussion revolved around calibration strategies for a
+polarization-aware tagger (which SM candles can anchor an $L$/$T$-sensitive
+score?), the treatment of the model dependence introduced when polarization
+information enters the discriminant, and coordination between ATLAS and CMS on
+common conventions.

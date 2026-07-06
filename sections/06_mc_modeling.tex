@@ -1,0 +1,55 @@
+\section{MC modeling, including polarisation (Day 2, morning)}
+
+\subsection{Measuring the polarization of boosted, hadronic $W$ bosons with jet substructure observables}
+\speaker{Songshaptak De}{Jo\v{z}ef Stefan Institute; with V.~Rentala and W.~Shepherd, JHEP 05 (2025) 028}
+A new, production-process-independent technique to extract the longitudinal and
+transverse polarization fractions of boosted hadronic $W$ bosons was presented.
+The key object is a jet-substructure observable $p_\theta =
+\Delta E^{\mathrm{reco}}/p_W^{\mathrm{reco}}$, the subjet energy difference
+normalized to the fat-jet momentum, which at parton level equals $|\costh|$,
+the decay polar angle in the $W$ rest frame; it is shown to have smaller
+reconstruction errors than the traditionally used opening-angle proxy,
+especially at large boosts, and remains faithful up to $|\costh|\lesssim0.9$.
+Hadron-level 2D templates in $(p_\theta,\tau_{21})$ are built for longitudinal
+and transverse $W$ jets (scalar/pseudoscalar $\phi\to WW\to 4q$ samples,
+$800<\pT<1000$~GeV, soft-drop groomed anti-$k_t$ $R=1.0$ jets) and for the QCD
+dijet background, and fitted to pseudo-data. Applied to semi-leptonic $WW$ VBS
+at the HL-LHC, the method reconstructs the \emph{transverse} fraction to
+20--30\% with 3--10~ab$^{-1}$, but with SM production alone the
+\emph{longitudinal} fraction cannot be distinguished from zero even with
+10~ab$^{-1}$ ($f_L = 0.0075 \pm 0.0045$ for a true 0.0074), because of the
+$\mathcal{O}(25{:}1)$ QCD background and the tiny $LL$ rate. The technique
+would however be sensitive to BSM-enhanced longitudinal production, and can be
+strengthened by using $p_\theta$ inside a multivariate analysis.
+
+\subsection{A systematic approach to amplitude-assisted polarization tagging (remote)}
+\speaker{Erik Bachmann}{TU Dresden; with D.~M.~Hoppe}
+This theory contribution addressed the question of what the \emph{optimal}
+polarization observable is. In contrast to classification-based strategies,
+which approximate polarization fractions through relative frequencies of purely
+polarized training samples, amplitude-assisted polarization tagging learns
+per-event polarization fractions directly from the matrix elements. The talk
+presented a systematic construction of the corresponding optimal observable,
+which defines the fundamental limit for separating polarization components and
+therefore provides a natural benchmark against which neural-network approaches
+can be tested---enabling a diagnosis of where and why their performance falls
+short of optimality. The methodology was illustrated on the simplest
+non-trivial process, leptonic $Z$+jet production at leading order, and
+extensions to $W$ and diboson processes as well as to hadronic decay channels
+were discussed.
+
+\subsection{MC roundtable and discussion}
+\speaker{Emanuele Re, Giovanni Pelliccioli}{Universit\`a \& INFN Milano-Bicocca, conveners}
+The roundtable, continuing the thread opened by the Day-1 theory review,
+discussed the status and interoperability of polarized event generation:
+polarized samples in MadGraph (LO and multi-jet merged), SHERPA (nLO+PS),
+POWHEG-BOX-RES (NLO+PS, and now SMEFT@NLO+PS), and fixed-order DPA computations
+(MoCaNLO, NNLO~QCD frameworks). Central topics were the definition dependence
+of polarized signals (frame choices, NWA vs DPA vs off-shell, interference and
+Breit--Wigner treatments), the size of higher-order corrections to hadronic
+decays and their interplay with parton-shower matching in the boosted regime,
+and the recommendation that experiments quote results with clearly documented
+polarization conventions to allow reinterpretation. The ongoing COMETA
+comparative study of polarized $ZZ$ (and its planned extensions to $WZ$ and to
+semi-leptonic final states) was identified as the natural vehicle to converge
+on best practices and best predictions.
