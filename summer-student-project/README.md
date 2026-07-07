@@ -39,6 +39,8 @@ baseline on a set of hand-crafted substructure variables.
 
 | Resource | Link |
 |---|---|
+| Gentle introduction to neural networks and transformers | https://www.3blue1brown.com/?topic=neural-networks |
+| Broad and quick introduction to Machine Learning in HEP | https://inspirehep.net/files/bb7fe2e5330d81b1ef71e6605e3e5d40 |
 | Particle Transformer (ParT) code + JetClass | https://github.com/jet-universe/particle_transformer |
 | JetClass-II generation scripts | https://github.com/jet-universe/jetclass2_generation |
 | ParT paper | https://arxiv.org/abs/2202.03772 |
