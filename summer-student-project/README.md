@@ -23,7 +23,7 @@ while V_T decays are forward-backward peaked (1 + cos²θ*), leading to
 different energy sharing between the two subjets. The goal of this project
 is to teach the **Particle Transformer (ParT)** — a state-of-the-art
 Transformer-based jet tagger — to distinguish V_L from V_T jets, using a
-fresh simulation sample produced with the same toolchain as JetClass-II.
+new simulation sample to be produced (with the same toolchain as the publicly available "JetClass").
 
 **Primary deliverable (must-have):**
 A validated W_L / W_T / QCD dataset (~500k jets per class), a fine-tuned
