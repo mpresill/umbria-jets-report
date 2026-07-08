@@ -1,5 +1,7 @@
 ## Some useful references for the ML part
 
+First time seeing github? Don't have an account and no idea on what is it? Then check this [link](https://swcarpentry.github.io/git-novice/) before proceeding.
+
 ### level 1 
 In this folder, there are few jupyter notebooks you can run locally on your laptop. 
 Start familiarizing with `1_python.ipynb`, `2_numpy.ipynb`, `3_plotting.ipynb`, `4_pandas.ipynb`
